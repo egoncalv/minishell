@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/02/27 23:20:08 by egoncalv         ###   ########.fr       */
+/*   Created: 2023/02/27 21:42:33 by egoncalv          #+#    #+#             */
+/*   Updated: 2023/02/27 23:22:16 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../include/minishell.h"
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-
-typedef struct s_data
+char	*give_prompt()
 {
-	char	*cur_line;
-}				t_data;
+	char	*input_line;
 
-char	*give_prompt();
-
-#endif
+	input_line = readline("Minishell > ");
+	if (input_line && *input_line)
+		add_history(input_line);
+	return (input_line);
+}
