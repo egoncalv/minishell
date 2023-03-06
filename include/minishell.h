@@ -11,3 +11,26 @@
 /* ************************************************************************** */
 
 
+#ifndef MINISHELL_H
+# define MINISHELL_H
+
+# include <sys/wait.h>
+# include <stdio.h>
+# include <dirent.h>
+# include <errno.h>
+# include <signal.h>
+
+
+typedef struct			s_command
+{
+	char				**args;
+}						t_command;
+
+struct typedef struct			s_shell_env
+{
+	char				**argv;
+	char				**env;
+	t_command			*command;
+    int                 fd_in;
+    int                 fd_out; 
+}	
