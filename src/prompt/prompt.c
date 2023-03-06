@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/25 21:00:34 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/06 19:14:42 by egoncalv         ###   ########.fr       */
+/*   Created: 2023/02/27 21:42:33 by egoncalv          #+#    #+#             */
+/*   Updated: 2023/03/06 19:16:21 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+// This function gives the prompt to the user, saves
+// the input to the history and returns it.
+char	*give_prompt()
 {
-	t_data	data;
+	char	*input_line;
 
-	(void)argc; // Just so it can compile with flags, we can remove these lines after using the variables
-	(void)argv;
-	(void)env;
-
-	while (1) // While no exit() or ctrl+c / ctrl+d
-		data.cur_line = give_prompt();
-	return (0);
+	input_line = readline("Minishell > ");
+	if (input_line && *input_line)
+		add_history(input_line);
+	return (input_line);
 }
