@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/02/27 23:20:08 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/07 12:53:12 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ typedef struct			s_command
 	char				**args;
 }						t_command;
 
-struct typedef struct			s_shell_env
+typedef struct			s_shell_env
 {
 	char				**argv;
 	char				**env;
 	t_command			*command;
     int                 fd_in;
     int                 fd_out; 
-}	
+}						t_shell_env;
 
 char	*give_prompt();
 
