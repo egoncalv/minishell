@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/07 12:53:12 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:41:21 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_data
 typedef struct			s_command
 {
 	char				**args;
+	struct s_command	*next;
 }						t_command;
 
 typedef struct			s_shell_env
