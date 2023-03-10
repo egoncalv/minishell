@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/07 13:41:21 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:45:40 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "libft.h"
 # include <sys/wait.h>
 # include <stdio.h>
 # include <dirent.h>
@@ -44,5 +45,7 @@ typedef struct			s_shell_env
 }						t_shell_env;
 
 char	*give_prompt();
+int		parse_line(t_data *data);
+int		tokenize_line(t_data *data);
 
 #endif

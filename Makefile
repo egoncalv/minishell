@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 21:03:06 by egoncalv          #+#    #+#              #
-#    Updated: 2023/03/06 19:15:53 by egoncalv         ###   ########.fr        #
+#    Updated: 2023/03/10 12:46:18 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ NAME = minishell
 
 SRC = 	src/minishell.c \
 		src/prompt/prompt.c \
+		src/parsing/parsing.c \
 
 OBJ = $(SRC:.c=.o)
 
-LIBS = -lreadline
+LIBS = -lreadline lib/libft.a
 
 all: $(NAME)
 
