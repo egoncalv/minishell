@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/07 12:53:12 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:41:21 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct			s_command
 	struct s_command	*next;
 	char 				*redirect_in; // input redirection file path
     char 				*redirect_out; // output redirection file path
+	struct s_command	*next;
 }						t_command;
 
 typedef struct			s_shell_env
