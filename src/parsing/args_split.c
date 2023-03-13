@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:54:14 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/13 13:29:12 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:45:46 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	arg_count(char *s)
 			if (s[i] == '"')
 				i = skip_quotes(s, i);
 			else
-				skip_spaces(s, i);
+				i = skip_letters(s, i);
 			cntr++;
 		}
 	}
@@ -63,7 +63,7 @@ char	**split_args(char *s)
 		if (s[i] == '"')
 			i = skip_quotes(s, i);
 		else
-			i = skip_spaces(s, i);
+			i = skip_letters(s, i);
 		if (i > j)
 		{
 			args[k] = ft_strndup(&s[j], i - j);
@@ -87,4 +87,11 @@ int	skip_spaces(char *s, int i)
 	while (s[i] == ' ' || s[i] == '\t')
 		i++;
 	return (i);
+}
+
+int	skip_letters(char *s, int i)
+{
+	while (s[i] && s[i] != ' ' && s[i] != '\t')
+		i++;
+	return(i);
 }

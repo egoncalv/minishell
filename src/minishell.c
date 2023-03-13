@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:34 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/13 14:44:05 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:52:31 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int argc, char **argv, char **env)
 	{
 		data.cur_line = give_prompt();
 		parse_line(&data);
-	}	
+	}
 	return (0);
 }

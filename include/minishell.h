@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/13 14:52:27 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:46:09 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ char	*ft_strndup(char *str, int n);
 char	**split_args(char *s);
 int		skip_quotes(char *s, int i);
 int		skip_spaces(char *s, int i);
+int		skip_letters(char *s, int i);
 
 #endif
