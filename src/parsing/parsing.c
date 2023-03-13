@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:35:22 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/10 14:32:40 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:20:57 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 int	parse_line(t_data *data)
 {
 	tokenize_line(data);
-	
 	return (0);
 }
 
 int	tokenize_line(t_data *data)
 {
 	char	**args;
-	
+
 	args = split_args(data->cur_line);
-	return(0);
+	return (0);
 }

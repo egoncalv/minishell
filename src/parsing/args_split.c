@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:54:14 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/10 14:32:29 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/13 13:29:12 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,15 @@ int	arg_count(char *s)
 	cntr = 0;
 	while (s[i])
 	{
-		while (s[i] == ' ' || s[i] == '\t')
-			i++;
-		if(s[i] != 0)
+		i = skip_spaces(s, i);
+		if (s[i] != 0)
+		{
+			if (s[i] == '"')
+				i = skip_quotes(s, i);
+			else
+				skip_spaces(s, i);
 			cntr++;
-		while (s[i] && s[i] != ' ' && s[i] != '\t')
-			i++;
+		}
 	}
 	return (cntr);
 }
@@ -51,17 +54,16 @@ char	**split_args(char *s)
 	char	**args;
 
 	args = malloc(sizeof(char *) * (arg_count(s) + 1));
-	if (!args)
-		return (0);
 	i = 0;
 	k = 0;
-	while(s[i])
+	while (s[i])
 	{
-		while (s[i] == ' ' || s[i] == '\t')
-			i++;
+		i = skip_spaces(s, i);
 		j = i;
-		while (s[i] != ' ' && s[i] != '\t' && s[i])
-			i++;
+		if (s[i] == '"')
+			i = skip_quotes(s, i);
+		else
+			i = skip_spaces(s, i);
 		if (i > j)
 		{
 			args[k] = ft_strndup(&s[j], i - j);
@@ -72,3 +74,17 @@ char	**split_args(char *s)
 	return (args);
 }
 
+int	skip_quotes(char *s, int i)
+{
+	while (s[++i] && s[i] != '"')
+		;
+	i++;
+	return (i);
+}
+
+int	skip_spaces(char *s, int i)
+{
+	while (s[i] == ' ' || s[i] == '\t')
+		i++;
+	return (i);
+}
