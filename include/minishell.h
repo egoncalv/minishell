@@ -32,6 +32,9 @@ typedef struct			s_command
 {
 	char				**args;
 	struct s_command	*next;
+	char 				*redirect_in; // input redirection file path
+    char 				*redirect_out; // output redirection file path
+	struct s_command	*next;
 }						t_command;
 
 typedef struct			s_shell_env
@@ -41,7 +44,9 @@ typedef struct			s_shell_env
 	t_command			*command;
     int                 fd_in;
     int                 fd_out; 
+	int					paths;
 }						t_shell_env;
+
 
 char	*give_prompt();
 
