@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/13 14:43:12 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:50:26 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ typedef struct s_data
 typedef struct s_command
 {
 	char				**args;
-	char 				*redirect_in; // input redirection file path
-    char 				*redirect_out; // output redirection file path
+	char				*redirect_in; // input redirection file path
+	char				*redirect_out; // output redirection file path
 	struct s_command	*next;
-}						t_command;
+}				t_command;
 
 typedef struct s_shell_env
 {
@@ -43,9 +43,8 @@ typedef struct s_shell_env
 	t_command	*command;
 	int			fd_in;
 	int			fd_out;
-	int					paths;
+	int			paths;
 }				t_shell_env;
-
 
 char	*give_prompt(void);
 
