@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   token.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 12:35:22 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/20 16:37:47 by egoncalv         ###   ########.fr       */
+/*   Created: 2023/03/13 18:31:05 by egoncalv          #+#    #+#             */
+/*   Updated: 2023/03/20 16:34:42 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
+#ifndef TOKEN_H
+# define TOKEN_H
 
-int	parse_line(t_data *data)
+typedef struct s_token
 {
-	t_token	*token_list;
+	int				type;
+	char			*content;
+	struct s_token	*next;
+}				t_token;
 
-	token_list = split_args(data->cur_line);
-	tokenize_line(token_list);
-	return (0);
-}
-
-int	tokenize_line(t_token *token_list)
-{
-	(void)token_list;
-	return (0);
-}
+#endif

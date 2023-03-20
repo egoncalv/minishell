@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 12:35:22 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/20 16:37:47 by egoncalv         ###   ########.fr       */
+/*   Created: 2023/03/20 16:41:42 by egoncalv          #+#    #+#             */
+/*   Updated: 2023/03/20 16:41:44 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/minishell.h"
-
-int	parse_line(t_data *data)
+int	skip_quotes(char *s, int i)
 {
-	t_token	*token_list;
-
-	token_list = split_args(data->cur_line);
-	tokenize_line(token_list);
-	return (0);
+	while (s[++i] && s[i] != '"')
+		;
+	i++;
+	return (i);
 }
 
-int	tokenize_line(t_token *token_list)
+int	skip_spaces(char *s, int i)
 {
-	(void)token_list;
-	return (0);
+	while (s[i] && (s[i] == ' ' || s[i] == '\t'))
+		i++;
+	return (i);
+}
+
+int	skip_letters(char *s, int i)
+{
+	while (s[i] && s[i] != ' ' && s[i] != '\t')
+		i++;
+	return(i);
 }

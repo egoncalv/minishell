@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:54:14 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/13 15:45:46 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/20 16:41:36 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ char	*ft_strndup(char *str, int n)
 	return (arg);
 }
 
-char	**split_args(char *s)
+t_token	*split_args(char *s)
 {
 	int		i;
 	int		j;
-	int		k;
-	char	**args;
+	t_token	*args;
+	t_token	*tmp;
 
-	args = malloc(sizeof(char *) * (arg_count(s) + 1));
+	args = malloc(sizeof(t_token));
+	tmp = args;
 	i = 0;
-	k = 0;
 	while (s[i])
 	{
 		i = skip_spaces(s, i);
@@ -66,32 +66,10 @@ char	**split_args(char *s)
 			i = skip_letters(s, i);
 		if (i > j)
 		{
-			args[k] = ft_strndup(&s[j], i - j);
-			k++;
+			args->content = ft_strndup(&s[j], i - j);
+			args->next = malloc(sizeof(t_token));
+			args = args->next;
 		}
 	}
-	args[k] = 0;
-	return (args);
-}
-
-int	skip_quotes(char *s, int i)
-{
-	while (s[++i] && s[i] != '"')
-		;
-	i++;
-	return (i);
-}
-
-int	skip_spaces(char *s, int i)
-{
-	while (s[i] == ' ' || s[i] == '\t')
-		i++;
-	return (i);
-}
-
-int	skip_letters(char *s, int i)
-{
-	while (s[i] && s[i] != ' ' && s[i] != '\t')
-		i++;
-	return(i);
+	return (tmp);
 }
