@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:54:14 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/13 13:29:12 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:55:53 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	arg_count(char *s)
 			if (s[i] == '"')
 				i = skip_quotes(s, i);
 			else
-				skip_spaces(s, i);
+				i = skip_letters(s, i);
 			cntr++;
 		}
 	}
@@ -46,45 +46,24 @@ char	*ft_strndup(char *str, int n)
 	return (arg);
 }
 
-char	**split_args(char *s)
+t_token	**split_args(char *s)
 {
 	int		i;
 	int		j;
-	int		k;
-	char	**args;
+	t_token	**args;
 
-	args = malloc(sizeof(char *) * (arg_count(s) + 1));
+	args = ft_calloc(sizeof(t_token), arg_count(s) + 1);
 	i = 0;
-	k = 0;
 	while (s[i])
 	{
 		i = skip_spaces(s, i);
 		j = i;
-		if (s[i] == '"')
+		if (s[i] == '"' || s[i] == '\'')
 			i = skip_quotes(s, i);
 		else
-			i = skip_spaces(s, i);
+			i = skip_letters(s, i);
 		if (i > j)
-		{
-			args[k] = ft_strndup(&s[j], i - j);
-			k++;
-		}
+			insert_token(args, new_token(ft_strndup(&s[j], i - j)));
 	}
-	args[k] = 0;
 	return (args);
-}
-
-int	skip_quotes(char *s, int i)
-{
-	while (s[++i] && s[i] != '"')
-		;
-	i++;
-	return (i);
-}
-
-int	skip_spaces(char *s, int i)
-{
-	while (s[i] == ' ' || s[i] == '\t')
-		i++;
-	return (i);
 }
