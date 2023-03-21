@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/20 16:39:06 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:20:02 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ typedef struct s_shell_env
 char	*give_prompt(void);
 
 int		parse_line(t_data *data);
-int		tokenize_line(t_token *token_list);
+int		tokenize_line(t_token **token_list);
 
 int		arg_count(char *s);
 char	*ft_strndup(char *str, int n);
-t_token	*split_args(char *s);
+t_token	**split_args(char *s);
 int		skip_quotes(char *s, int i);
 int		skip_spaces(char *s, int i);
 int		skip_letters(char *s, int i);

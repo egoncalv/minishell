@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:54:14 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/20 16:41:36 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:32:53 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,13 @@ char	*ft_strndup(char *str, int n)
 	return (arg);
 }
 
-t_token	*split_args(char *s)
+t_token	**split_args(char *s)
 {
 	int		i;
 	int		j;
-	t_token	*args;
-	t_token	*tmp;
+	t_token	**args;
 
-	args = malloc(sizeof(t_token));
-	tmp = args;
+	args = ft_calloc(sizeof(t_token), arg_count(s));
 	i = 0;
 	while (s[i])
 	{
@@ -65,11 +63,7 @@ t_token	*split_args(char *s)
 		else
 			i = skip_letters(s, i);
 		if (i > j)
-		{
-			args->content = ft_strndup(&s[j], i - j);
-			args->next = malloc(sizeof(t_token));
-			args = args->next;
-		}
+			insert_token(args, new_token(ft_strndup(&s[j], i - j)));
 	}
-	return (tmp);
+	return (args);
 }
