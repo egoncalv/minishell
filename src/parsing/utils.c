@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 16:41:42 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 10:54:52 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:19:22 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	skip_quotes(char *s, int i)
 	if (s[i] == '"')
 	{
 		while (s[++i] && s[i] != '"')
-		;
+			;
 	}
 	else if (s[i] == '\'')
 	{
 		while (s[++i] && s[i] != '\'')
-		;
+			;
 	}
 	i++;
 	return (i);

@@ -6,24 +6,33 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:31:05 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 10:32:49 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:18:18 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKEN_H
 # define TOKEN_H
 
-//Redirections
+//Redirections > >> < <<
 # define R_INPUT 50
 # define R_OUTPUT 51
 # define R_DELIMITER 52
 # define R_APPEND 53
 
-//Pipes
+//Pipes |
 # define PIPE 54
 
-//Env Variables
+//Env Variables $
 # define ENV_VAR 55
+
+//Built-ins
+# define BUILTIN 56
+
+//CMD options -
+#define CMD_OPTIONS 57
+
+//Exit status $?
+#define EXIT_STATUS 58
 
 typedef struct s_token
 {
