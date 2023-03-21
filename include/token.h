@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:31:05 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 11:18:18 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:33:38 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,14 @@
 # define BUILTIN 56
 
 //CMD options -
-#define CMD_OPTIONS 57
+# define CMD_OPTIONS 57
+
+//Quotes "" ''
+# define SINGLE_QUOTES 58
+# define DOUBLE_QUOTES 59
 
 //Exit status $?
-#define EXIT_STATUS 58
+# define EXIT_STATUS 60
 
 typedef struct s_token
 {
@@ -45,5 +49,9 @@ typedef struct s_token
 t_token	*new_token(char *content);
 void	insert_token(t_token **list, t_token *new);
 t_token	*token_last(t_token *lst);
+
+int		is_builtin(t_token *node);
+int		is_symbol(t_token *node);
+int		is_quoted(t_token *node);
 
 #endif

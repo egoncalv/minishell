@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:35:22 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 11:17:51 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:33:59 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,26 @@ int	tokenize_line(t_token **token_list)
 			;
 		else if (is_builtin(tmp))
 			;
+		else if (is_quoted(tmp))
+			;
 		printf("\n%s\t%d\n", tmp->content, tmp->type);
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+int	is_quoted(t_token *node)
+{
+	int	len;
+
+	len = ft_strlen(node->content);
+	if (node->content[0] == '"' && node->content[len - 1] == '"')
+		node->type = DOUBLE_QUOTES;
+	else if (node->content[0] == '\'' && node->content[len - 1] == '\'')
+		node->type = SINGLE_QUOTES;
+	else
+		return (0);
+	return (1);
 }
 
 int	is_builtin(t_token *node)
