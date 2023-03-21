@@ -6,12 +6,15 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 18:31:05 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 11:33:38 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:42:07 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOKEN_H
 # define TOKEN_H
+
+//CMD
+# define CMD 10
 
 //Redirections > >> < <<
 # define R_INPUT 50
@@ -50,8 +53,8 @@ t_token	*new_token(char *content);
 void	insert_token(t_token **list, t_token *new);
 t_token	*token_last(t_token *lst);
 
-int		is_builtin(t_token *node);
-int		is_symbol(t_token *node);
-int		is_quoted(t_token *node);
+int		check_builtin(t_token *node);
+int		check_symbol(t_token *node);
+int		check_quotes(t_token *node);
 
 #endif

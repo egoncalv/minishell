@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:35:22 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 11:33:59 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 11:42:34 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,21 @@ int	tokenize_line(t_token **token_list)
 	tmp = *token_list;
 	while (tmp)
 	{
-		if (is_symbol(tmp))
+		if (check_symbol(tmp))
 			;
-		else if (is_builtin(tmp))
+		else if (check_builtin(tmp))
 			;
-		else if (is_quoted(tmp))
+		else if (check_quotes(tmp))
 			;
+		else
+			tmp->type = CMD;
 		printf("\n%s\t%d\n", tmp->content, tmp->type);
 		tmp = tmp->next;
 	}
 	return (0);
 }
 
-int	is_quoted(t_token *node)
+int	check_quotes(t_token *node)
 {
 	int	len;
 
@@ -54,7 +56,7 @@ int	is_quoted(t_token *node)
 	return (1);
 }
 
-int	is_builtin(t_token *node)
+int	check_builtin(t_token *node)
 {
 	if (!ft_strncmp(node->content, "echo", ft_strlen(node->content)))
 		node->type = BUILTIN;
@@ -75,7 +77,7 @@ int	is_builtin(t_token *node)
 	return (1);
 }
 
-int	is_symbol(t_token *node)
+int	check_symbol(t_token *node)
 {
 	if (!ft_strncmp(node->content, ">", ft_strlen(node->content)))
 		node->type = R_OUTPUT;
