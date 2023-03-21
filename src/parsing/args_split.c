@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:54:14 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 10:39:39 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:53:39 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_token	**split_args(char *s)
 	{
 		i = skip_spaces(s, i);
 		j = i;
-		if (s[i] == '"')
+		if (s[i] == '"' || s[i] == '\'')
 			i = skip_quotes(s, i);
 		else
 			i = skip_letters(s, i);
