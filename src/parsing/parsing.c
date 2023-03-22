@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:35:22 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 11:42:34 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/22 16:34:33 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,17 @@
 int	parse_line(t_data *data)
 {
 	t_token	**token_list;
+	t_token	*tmp;
 
 	token_list = split_args(data->cur_line);
 	tokenize_line(token_list);
-	return (0);
+	tmp = *token_list;
+	while (tmp)
+	{
+		printf("%d\n", tmp->type);
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
 int	tokenize_line(t_token **token_list)
@@ -36,7 +43,6 @@ int	tokenize_line(t_token **token_list)
 			;
 		else
 			tmp->type = CMD;
-		printf("\n%s\t%d\n", tmp->content, tmp->type);
 		tmp = tmp->next;
 	}
 	return (0);
@@ -92,7 +98,10 @@ int	check_symbol(t_token *node)
 	else if (!ft_strncmp(node->content, "$?", ft_strlen(node->content)))
 		node->type = EXIT_STATUS;
 	else if (node->content[0] == '-')
-		node->type = CMD_OPTIONS;
+	{
+		if (node->prev && (node->prev->type == CMD || node->prev->type == BUILTIN))
+			node->type = CMD_OPTIONS;
+	}
 	else if (node->content[0] == '$')
 		node->type = ENV_VAR;
 	else

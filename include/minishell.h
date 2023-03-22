@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 11:33:28 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:13:13 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_data
 
 typedef struct s_command
 {
+	char				*command;
 	char				**args;
 	char				*redirect_in; // input redirection file path
 	char				*redirect_out; // output redirection file path

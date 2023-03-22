@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:34 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/13 14:52:31 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:15:59 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(int argc, char **argv, char **env)
 	while (1) // While no exit() or ctrl+c / ctrl+d
 	{
 		data.cur_line = give_prompt();
-		parse_line(&data);
+		if (!parse_line(&data))
+			printf("syntax error\n");
 	}
 	return (0);
 }
