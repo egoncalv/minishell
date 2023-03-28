@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:35:22 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/22 16:34:33 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/28 11:51:11 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	parse_line(t_data *data)
 	token_list = split_args(data->cur_line);
 	tokenize_line(token_list);
 	tmp = *token_list;
+	if (tmp->next == NULL && tmp->type >= 50 && tmp->type <= 54)
+		return (print_error(SYNTAX_NL));
 	while (tmp)
 	{
 		printf("%d\n", tmp->type);
