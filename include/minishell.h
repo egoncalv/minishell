@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 21:00:43 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/21 17:13:13 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/03/28 11:52:13 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include "token.h"
+# include "errors.h"
 # include <sys/wait.h>
 # include <stdio.h>
 # include <dirent.h>

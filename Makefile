@@ -20,6 +20,7 @@ SRC = 	src/minishell.c \
 		src/parsing/args_split.c \
 		src/parsing/utils.c \
 		src/parsing/token_list.c \
+		src/errors/errors.c \
 
 OBJ = $(SRC:.c=.o)
 

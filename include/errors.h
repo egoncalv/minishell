@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   errors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/25 21:00:34 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/28 11:53:34 by egoncalv         ###   ########.fr       */
+/*   Created: 2023/03/28 11:41:20 by egoncalv          #+#    #+#             */
+/*   Updated: 2023/03/28 11:52:28 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#ifndef ERRORS_H
+# define ERRORS_H
 
-int	main(int argc, char **argv, char **env)
-{
-	t_data	data;
+# define SYNTAX_NL 100
 
-	(void)argc; // Just so it can compile with flags, we can remove these lines after using the variables
-	(void)argv;
-	(void)env;
-	while (1) // While no exit() or ctrl+c / ctrl+d
-	{
-		data.cur_line = give_prompt();
-		parse_line(&data);
-	}
-	return (0);
-}
+int	print_error(int	error_code);
+
+#endif
