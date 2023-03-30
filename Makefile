@@ -45,7 +45,7 @@ clean:
 
 fclean: clean
 	@$(MAKE) --no-print-directory -C libft fclean
-	@rm -rf $(LIBFT_OBJ)
+	@rm -f minishell
 
 re: fclean $(NAME)
 
