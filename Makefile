@@ -35,7 +35,7 @@ $(NAME): $(OBJ)
 	@echo "Minishell compiled"
 
 %.o: %.c
-	@make -C libft
+	@$(MAKE) -C libft
 	@gcc $(CFLAGS) -c $< -o $@
 
 clean:
@@ -43,7 +43,7 @@ clean:
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@$(MAKE) -C libft fclean
 	@rm -rf $(LIBFT_OBJ)
 
 re: fclean $(NAME)
