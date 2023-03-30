@@ -44,6 +44,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@rm -rf $(LIBFT_OBJ)
 
 re: fclean $(NAME)
 
