@@ -60,5 +60,6 @@ t_token	**split_args(char *s);
 int		skip_quotes(char *s, int i);
 int		skip_spaces(char *s, int i);
 int		skip_letters(char *s, int i);
+int		is_symbol(char *str);
 
 #endif

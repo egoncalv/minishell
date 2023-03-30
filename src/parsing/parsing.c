@@ -87,24 +87,24 @@ int	check_builtin(t_token *node)
 
 int	check_symbol(t_token *node)
 {
-	if (!ft_strncmp(node->content, ">", ft_strlen(node->content)))
+	if (!ft_strncmp(node->content, ">", 1))
 		node->type = R_OUTPUT;
-	else if (!ft_strncmp(node->content, "<", ft_strlen(node->content)))
+	else if (!ft_strncmp(node->content, "<", 1))
 		node->type = R_INPUT;
-	else if (!ft_strncmp(node->content, "<<", ft_strlen(node->content)))
+	else if (!ft_strncmp(node->content, "<<", 2))
 		node->type = R_DELIMITER;
-	else if (!ft_strncmp(node->content, ">>", ft_strlen(node->content)))
+	else if (!ft_strncmp(node->content, ">>", 2))
 		node->type = R_APPEND;
-	else if (!ft_strncmp(node->content, "|", ft_strlen(node->content)))
+	else if (!ft_strncmp(node->content, "|", 1))
 		node->type = PIPE;
-	else if (!ft_strncmp(node->content, "$?", ft_strlen(node->content)))
+	else if (!ft_strncmp(node->content, "$?", 2))
 		node->type = EXIT_STATUS;
-	else if (node->content[0] == '-')
+	else if (!ft_strncmp(node->content, "-", 1))
 	{
 		if (node->prev && (node->prev->type == CMD || node->prev->type == BUILTIN))
 			node->type = CMD_OPTIONS;
 	}
-	else if (node->content[0] == '$')
+	else if (!ft_strncmp(node->content, "$", 1))
 		node->type = ENV_VAR;
 	else
 		return (0);
