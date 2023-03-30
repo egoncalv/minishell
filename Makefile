@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 21:03:06 by egoncalv          #+#    #+#              #
-#    Updated: 2023/03/21 10:33:39 by egoncalv         ###   ########.fr        #
+#    Updated: 2023/03/27 16:14:39 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,15 +23,18 @@ SRC = 	src/minishell.c \
 
 OBJ = $(SRC:.c=.o)
 
-LIBS = -lreadline lib/libft.a
+LIBFT_OBJ = libft/*.o
+
+LIBS = -lreadline
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(CFLAGS) $(LIBS) $(OBJ) -o $(NAME)
+	@gcc $(CFLAGS) $(LIBS) $(OBJ) $(LIBFT_OBJ) -o $(NAME)
 	@echo "Minishell compiled"
 
 %.o: %.c
+	@make -C libft
 	@gcc $(CFLAGS) -c $< -o $@
 
 clean:
