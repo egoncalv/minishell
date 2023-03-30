@@ -31,19 +31,20 @@ LIBS = -lreadline
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@$(MAKE) --no-print-directory -C libft bonus
 	@gcc $(CFLAGS) $(LIBS) $(OBJ) $(LIBFT_OBJ) -o $(NAME)
 	@echo "Minishell compiled"
 
 %.o: %.c
-	@$(MAKE) -C libft
 	@gcc $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "Cleaning..."
+	@$(MAKE) --no-print-directory -C libft clean
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@$(MAKE) -C libft fclean
+	@$(MAKE) --no-print-directory -C libft fclean
 	@rm -rf $(LIBFT_OBJ)
 
 re: fclean $(NAME)
