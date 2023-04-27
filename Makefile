@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 21:03:06 by egoncalv          #+#    #+#              #
-#    Updated: 2023/03/27 16:14:39 by egoncalv         ###   ########.fr        #
+#    Updated: 2023/04/27 15:27:07 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC = 	src/minishell.c \
 		src/parsing/args_split.c \
 		src/parsing/utils.c \
 		src/parsing/token_list.c \
+		src/parsing/cmd_list.c \
 		src/errors/errors.c \
 
 OBJ = $(SRC:.c=.o)

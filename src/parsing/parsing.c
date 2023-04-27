@@ -6,25 +6,35 @@
 /*   By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 12:35:22 by egoncalv          #+#    #+#             */
-/*   Updated: 2023/03/28 11:51:11 by egoncalv         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:23:57 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+
+// echo2"ola, mundo"23>2t.txt23>>|2t2.txt23>>23>>23t3.txt232wc232ls
+// 
+
 int	parse_line(t_data *data)
 {
-	t_token	**token_list;
-	t_token	*tmp;
+	t_token		**token_list;
+	t_token		*tmp;
+	data->cmd_table = NULL;
 
 	token_list = split_args(data->cur_line);
 	tokenize_line(token_list);
 	tmp = *token_list;
 	if (tmp->next == NULL && tmp->type >= 50 && tmp->type <= 54)
 		return (print_error(SYNTAX_NL));
+	if (tmp->type >= 50 && tmp->type <= 53 && tmp->next->type == 54)
+		return (print_error(SYNTAX_NL));
 	while (tmp)
 	{
-		printf("%d\n", tmp->type);
+		if (tmp->type == CMD || tmp->type == BUILTIN)
+		{
+			insert_cmd(data->cmd_table, new_cmd(tmp->content));
+		}
 		tmp = tmp->next;
 	}
 	return (1);
