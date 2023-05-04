@@ -63,7 +63,30 @@ t_token	**split_args(char *s)
 		else
 			i = skip_letters(s, i);
 		if (i > j)
-			insert_token(args, new_token(ft_strndup(&s[j], i - j)));
+		{
+			if (is_symbol(&s[j]))
+			{
+				insert_token(args, new_token(ft_strndup(&s[j], is_symbol(&s[j]))));
+				j += is_symbol(&s[j]);
+				if (i > j)
+					insert_token(args, new_token(ft_strndup(&s[j], i - j)));
+			}
+			else
+				insert_token(args, new_token(ft_strndup(&s[j], i - j)));
+		}
 	}
 	return (args);
+}
+
+int	is_symbol(char *str)
+{
+	if (ft_strlen(str) >= 2 && !ft_strncmp(str, ">>", 2))
+		return (2);
+	if (ft_strlen(str) >= 2 && !ft_strncmp(str, "<<", 2))
+		return (2);
+	if (str && !ft_strncmp(str, "<", 1))
+		return (1);
+	if (str && !ft_strncmp(str, ">", 1))
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: egoncalv <egoncalv@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/25 21:03:06 by egoncalv          #+#    #+#              #
-#    Updated: 2023/03/21 10:33:39 by egoncalv         ###   ########.fr        #
+#    Updated: 2023/04/27 15:27:07 by egoncalv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,15 +20,20 @@ SRC = 	src/minishell.c \
 		src/parsing/args_split.c \
 		src/parsing/utils.c \
 		src/parsing/token_list.c \
+		src/parsing/cmd_list.c \
+		src/errors/errors.c \
 
 OBJ = $(SRC:.c=.o)
 
-LIBS = -lreadline lib/libft.a
+LIBFT_OBJ = libft/*.o
+
+LIBS = -lreadline
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@gcc $(CFLAGS) $(LIBS) $(OBJ) -o $(NAME)
+	@$(MAKE) --no-print-directory -C libft bonus
+	@gcc $(CFLAGS) $(LIBS) $(OBJ) $(LIBFT_OBJ) -o $(NAME)
 	@echo "Minishell compiled"
 
 %.o: %.c
@@ -36,10 +41,12 @@ $(NAME): $(OBJ)
 
 clean:
 	@echo "Cleaning..."
+	@$(MAKE) --no-print-directory -C libft clean
 	@rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@$(MAKE) --no-print-directory -C libft fclean
+	@rm -f minishell
 
 re: fclean $(NAME)
 
